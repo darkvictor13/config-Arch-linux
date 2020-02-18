@@ -1,0 +1,7 @@
+Para fazer as configs desse repositorio funcionar basta criar links simbolicos para cada uma das configiracoes
+
+*Como criar um link simbolico :
+  ->ln -s {aonde esta este arquivo de config} {lugar padrao da config}
+*Por exemplo o link simbolico do meu vimrc ficou assim
+  ->ln -s ~/Repos/config-Arch-linux/.vimrc ~/.vimrc
+
