@@ -1,0 +1,209 @@
+Esse arquivo texto tem como objetivo informar o Victor do futuro e demais interessados, de como foi o passo a passo de como instalei o arch linux pela 1 vez no meu PC(1 vez que deu certo kkkkkk).
+
+# Processo de Instalacao :
+
+# 1-Passo → Conectar na internet, no caso via wifi.
+  ↳ No meu notebook da lenovo, o hardware utilizado para conectar no wifi vinha bloqueado, para saber se isso esta acontecendo utilize o comando :
+    *[rfkill list all]*. Veja como fica o OUTPUT :
+     |-----------------------------------|
+     |	$ rfkill list all                |
+     |	0: phy0: Wireless LAN            |
+	 |		Soft blocked: no			 |
+	 |		Hard blocked: yes			 |
+	 |	1: acer-wireless: Wireless LAN   |
+	 |		Soft blocked: yes			 |
+	 |		Hard blocked: no			 |
+	 |-----------------------------------|
+  → Se no Output o hardware utilizado para wifi tiver bloqueado basta utilizar o comando :
+	*[rfkill unblock all]*.
+
+  → Tendo Desbloqueado, basta usar o comando *[wifi-menu]*, e entao sera aberta uma tela na qual basta selecionar a rede(aparecera todos os SSID disponiveis para conectar), e informar a senha.
+	  ↳Nesse ponto possivelmente vc ja tenha wifi, para testar so dar ping para um site aleatorio.
+
+  # Obs : Caso nao tenha conseguido conectar assim ae vao outros metodos :
+	↳ Via cabo de rede.
+	  1 - Conecte o cabo de internet no pc.
+	  2 - Ache o nome da porta de rede usando o comando *[ip link]*.
+		↳ Esse comando vai gerar um Output de todas as placas do pc procure uma que comeca com "e", e em sua descricao fala que e a porta de enthernet.
+	  3 - Selecione a porta utilizando o comando *[ip link set "nome da porta"]*.
+	  4 - Utilize o comando *[dhcpcd]*, provavelmente voce tem internet, entao verifique.
+
+	-> Outros metodos wifi
+	  ↳ utilizar o comando *[systemctl --type=service]* seguido do *[dhcpcd]*.
+	  → utilizar o comando *[systemctlenable --now NetworkManager]*. //caso der ruim tenta dar um espaco ao lado de enable, pq vai q anotei errado
+		↳ Comandos do NetworkManager, ele precisa estar ativo para funcionar :
+		  1 - *[nmcli device wifi list]* -> lista todas as redes desponiveis
+		  2 - *[nmcli device wifi connect "SSID da rede a ser conectada" password "Senha sem as aspas"]* -> ja ta explicativo o suficiente
+
+# 2-Passo -> Particionar o disco, utilizando cfdisk
+  ↳Primeiramente eh sempre bom verificar as particioes ja existentes no disco, para fazer isso vamos usar o comando :
+	*[fdisk -l]*.
+	→ o parametro (-l) eh para listar todas as particoes existentes, ele listara de todos os discos disponiveis
+
+  → Sabendo qual o disco a ser particionado e as particoes ja existentes basta utilizar o comando :
+	*[cfdisk /dev/sdX]* para realizar o particionamento
+	→ Obs : no lugar de (X) coloque a letra correta para indicar seu disco, se for o disco primario sera "sda", mas pode ser sdb, sdc, etc...
+	→ Para usar o cfdisk eh muito simples basta usar as setas para navegar ate o (new), digitar o tamanho da particao e selecionar o tipo dela.
+	  ↳ Quando instalei o arch criei 4 particoes, sendo elas a primeira para o "/boot", a segunda para o "/", a terceira para o "/home" e a quarta para a swap
+	  → Como ja tinha o fedora instalado no computador minhas paricoes ficaram assim :
+	  |-----------|-----------|-----------------------|
+	  |	Particao	|		Nome    |	Tipo									|
+	  |-----------|-----------|-----------------------|
+	  |	/dev/sda4	|		/boot		|	BIOS boot							|
+	  |	/dev/sda5 |		/				|	Linux filesystem			|
+	  |	/dev/sda6	|		/home		|	Linux filesystem			|
+	  |	/dev/sda7	|		swap		|	Linux swap						|
+	  |-----------|-----------|-----------------------|
+
+	  → Agora eh so ir em (Write), digitar yes e entao suas paricoes estao feitas
+
+  → Agora vamos adicionar filesystems em nossas paricoes, no meu caso usei fat32 para o boot e ext4 para o '/' e o '/home', pode-se usar qualquer filesystem desejado
+	↳ Para fazer isso basta 3 comandos, um para cada paricao, e entao um para fazer a swap, no meu caso ficou assim :
+	  |-------------------------|
+	  | Para a swap		  				|
+	  |													|
+	  |	mkswap /dev/sda7				|
+	  |	swapon /dev/sda7				|
+	  |-------------------------|
+	  |	Resto do disco					|
+	  |													|
+	  | mkfs.fat -F32 /dev/sda4	|
+	  |	mkfs.ext4 /dev/sda5			|
+	  |	mkfs.ext4 /dev/sda6			|
+	  |-------------------------|
+	
+  → Agora vamos criar os pontos de montagem, sempre o primeiro a ser criado deve ser o "/", para fazer isso :
+	*[mount /dev/sda5 /mnt]*, o padrao e sempre montar no /mnt, e deve ser utilizado a particao do "/", no meu caso o "/dev/sda5"
+
+	→ vamos criar as pastas necessarias para receber os pontos de montagem :
+	 |--------------------|
+	 | ->cd /mnt		  		|
+	 | ->mkdir home		  	|
+	 | ->mkdir boot		  	|
+	 | ->mkdir boot/efi	  |
+	 |--------------------|
+	
+	→ tendo criado as pastas vamos criar os pontos de montagem nelas
+	  |---------------------------------|
+	  |	mount /dev/sda3 /mnt/home				|
+	  |	mount /dev/sda1 /mnt/boot/efi		|
+	  |---------------------------------|
+
+# 3-Passo Realmente instalar o arch
+  ↳ Para instalar o arch eh realmente so um comando, mas para deixar essa instalacao mais rapida vamos entrar na lista de mirrors e deixar somente os necessarios com o comando :
+	*[vim /etc/pacman.d/mirrorlist ]*
+	→ Apague todos os mirrors que nao forem da america
+	→ Voce sempre pode a hora que quiser alterar esse arquivo, para ver os mirrors disponiveis entre neste site : https://www.archlinux.org/mirrorlist/
+
+  → Entao agora vamos instalar o arch linux, para isso basta o comando *[pacstrap /mnt base]*
+	  ↳ Para ter mais alguns pacotes eu instalei o pacote de desenvolvedor e o vim para logo ao instalr o sistema ja termos um editor de texto, entao ficou assim :
+		 *[pacstrap /mnt base base-devel linux linux-firmware vim]* 
+	  → Se vc quiser da para instalar qualquer coisa agora
+
+# 4-Passo gerar o FSTAB
+  ↳ O fstab diz para o sistema onde estão montadas cada uma das partições
+  → Para gera-lo utilizei o comando *[genfstab -U /mnt >> /mnt/etc/fstab]*
+  → O parametro -U eh para ele comentar o nome das particoes e utilizar os UUIDs.
+  → Verifique se esta tudo certo, caso contrario arrume o arquivo utilizando o vim, que esta na pasta (mnt/etc/fstab)
+	↳ Entao o comando ficou *[vim mnt/etc/fstab]*
+
+# 5-Passo Entrar no sistema assim saindo do pendrive
+  ↳ Para acessar o sistema instalado basta utilizar o comando *[arch-chroot /mnt]*
+  → Dentro do sistema vamos fazer varios passos importantes para que o sistema rode tranquilamente sem o pendrive
+  → Esses listados abaixo foram os que eu fiz e julguei mais importantes :
+	1- Configurar o fuso horario, ajustando com o horario de Brasilia
+	  |-------------------------------------------------------------|
+	  | ln -sf /usr/share/zoneinfo/America/Sao_Paulo /etc/localtime	|
+	  |-------------------------------------------------------------|
+	
+	→ Se sua bios estiver com o horario certo insira esse comando : 
+	  |---------------------|
+	  |	hwclock --systohc		|
+	  |---------------------|
+
+	2- Alterar o arquivo locale.gen
+	  ↳ Acesse o arquivo com o comando :
+		|---------------------|
+		| vim /etc/locale.gen |
+		|---------------------|
+		↳ Agora apague o "#" na frente da linguagem que queira utilizar, pode descomentar a linha : "pt_BR.UTF-8 UTF-8", no meu caso foi a linha "en_US.UTF-8 UTF-8" 
+		→ Tendo descomentado a linha e salvado o aqruivo execute o seguinte comando :
+		  |-------------|
+		  |	locale-gen	|
+		  |-------------|
+	  → Agora vamos configurar uma variavel com a linguagem escolhida :
+		 |----------------------------------------------| 
+		 |	echo LANG=en_US.UTF-8 >> /etc/locale.conf		|	
+		 |----------------------------------------------|
+	
+	3- editar o nome de host para rede
+	  ↳ Vamos abrir o arquivo hostname, entao vamos digitar o comando :
+		  *[vim /etc/hostname]*
+	  -> Dentro do arquivo vamos escrever o nome desejado no meu caso foi :
+		  "arch-victor"	  Obs : nao coloquei as aspas, o nome deve ser uma unica palavra sem letras maiusculas
+
+	4- Configurar o hosts
+	  ↳ Abra o arquivo com o comando :
+		*[vim /etc/hosts]*
+	  → Entao digite a seguinte sequencia, subistituindo "arch-victor" pelo seu nome de host
+		|-----------------------------------------------------------------|
+		| 127.0.0.1      localhost.localdomain            localhost		  	|
+		| ::1            localhost.localdomain            localhost		  	|
+		| 127.0.1.1		 	 arch-victor.localdomain		  		arch-victor	  	|
+		|-----------------------------------------------------------------|
+
+	5- Configurar a senha do root
+	  ↳ Caso voce nao tenha criado nenhum usuario basta digitar *[passwd]*, caso tenha outro usuario *[passwd root]*
+	  → Entao digite duas vezes a senha que deseja usar para o root
+
+	6- Criar um novo usuario 
+	  ↳ no arch nao devemos criar o usuario com o simples (useradd nome) devemos utilizar o comando com esses parametros :
+		*[useradd -m -g users -G wheel victor]*, utilize o nome que vc quiser no lugar de victor
+	  → se vc tiver instalado o base-devel vc ja tem o sudo instalado entao vamos dar permissao de usuario super a este usuario :
+		↳ Abra o arquivo com o comando :
+		  *[vim /etc/sudoers]*
+		→ No fim do arquivo digite (EXATAMENTE ASSIM), claro que mudando victor para o seu nome de usuario :
+		  |------------------------|
+		  |	victor ALL=(ALL) ALL   |
+		  |------------------------|
+	
+	7- Instalar os pacotes adicionais :
+	  ↳ Para instalar programas no arch basta digitar *[pacman -S]*, o unico pacote que achei necessario instalar agora foi para gerenciar a internet entao :
+		*[pacman -S networkmanager]*
+	  → Caso queira um icone bonito para configurar a internet  na sua futura interface grafica entao :
+		*[pacman -S etwork-manager-applet]*
+	  → Caso esteja fazendo um dual boot :
+		*[pacman -S os-prober]*
+	
+	8- Instalar o grub 
+	  → Para instalar o grub basta digitar os seguintes comandos com muito cuidado, no meu caso foi a instalacao no modo UEFI
+		|---------------------------------------------------------------------------------------------------|
+		| pacman -S grub-efi-x86_64 efibootmgr																															|
+		| grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=arch_grub --recheck		|
+		| cp /usr/share/locale/en\@quot/LC_MESSAGES/grub.mo /boot/grub/locale/en.mo													|
+		|---------------------------------------------------------------------------------------------------|
+		  ↳Obs : no comando de copiar, o terceiro, va sempre apertando tab para saber se as pastas existem, caso elas nao existam basta crialas assim
+		     |------------------------|
+			 	 |  cd /boot/grub		  		|
+			 	 |  mkdir locale				  |
+			 	 |  touch locale/en.mo	  |
+		     |------------------------|
+	  → Caso tudo tenha dado certo basta mais um comando para que esteja tudo pronto :
+		*[grub-mkconfig -o /boot/grub/grub.cfg]*
+	
+  9- Ativar o networkmanager e sair
+	↳ Vamos ativar o network manager com o comando :
+	  *[systemctl enable NetworkManager]*
+	→ Possivelmente seu arch esta todo configurado parabens victor do futuro
+	→ Agora vamos testar isso
+	→ Saia do sistema apertando (Ctrl + D)
+	→ insira o comando reboot
+	→ Retire o pendrive bootavel
+
+# Pos-instalacao
+  ↳ 1- Passo Instalar o xorg e atualizar
+	|------------------------|
+	| pacman -Sy			 			 |
+	| pacman -S xorg-server	 |
+	|------------------------|
+

@@ -4,11 +4,18 @@
 # Should you change your keyboard layout some time, delete
 # this file and re-run i3-config-wizard(1).
 #
-
-# i3 config file (v4)
-#
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 
+################################################################################
+#                                                                              #
+# Arquivo de configuracao modificado por : Victor                              #
+#                                                                              #
+# O arquivo de configuracao do i3 vem por padrao na home do seu usuario        #
+# Ou seja o arquivo esta em *[~/.vimrc]*                                       #
+#                                                                              #
+################################################################################
+
+# Configura o mod para a tecla do windows
 set $mod Mod4
 
 # Font for window titles. Will also be used by the bar unless a different font
@@ -28,27 +35,27 @@ font pango:Terminus 20px #monospace 11
 
 ## iniciando com o sistema ##
 #=================================================================================
-exec --no-startup-id nitrogen --restore&
-exec --no-startup-id compton
-exec --no-startup-id volumeicon
-exec --no-startup-id nm-applet
-exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
+exec --no-startup-id nitrogen --restore&                                         #
+exec --no-startup-id compton                                                     #
+exec --no-startup-id volumeicon                                                  #
+exec --no-startup-id nm-applet                                                   #
+exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork           #
 #=================================================================================
 
 ## Meus atalahos de teclado, depois os gerados automaticamente ##
-#=================================================================================
-# Abre o terminal
-bindsym $mod+Return exec termite
-
-# Abre o firefox
-bindsym $mod+f exec firefox
-
-# Abre o Vs-code
-bindsym $mod+x exec code
-
-# Abre o ranger
-bindsym $mod+c exec ranger
-#=================================================================================
+#=====================================
+# Abre o terminal                    #  
+bindsym $mod+Return exec termite     #
+                                     #
+# Abre o firefox                     #
+bindsym $mod+f exec firefox          #
+                                     #
+# Abre o Vs-code                     #
+bindsym $mod+x exec code             #
+                                     #
+# Abre o ranger                      #
+bindsym $mod+c exec ranger           #
+#=====================================
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -174,54 +181,54 @@ bindsym $mod+r mode "resize"
 
 ## configurando a barra de informacoes do i3 ##
 #=================================================================================
-bar {
-  #output			LVDS1
-  status_command    i3status
-  position			bottom
-  font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
-  font pango:Terminus 15px 
-  
-  colors {
-	background #0A0019
-	statusline #00ff00
-	separator  #ffffff
-
-	#Class			   border  backgr. indic.  child_border
-	focused_workspace  #00ff00 #00a100 #000000
-	active_workspace   #333333 #00a100 #000000
-	inactive_workspace #0a0019 #ff0000 #000000
-	urgent_workspace   #2f343a #900000 #ffffff
-	binding_mode       #2f343a #900000 #ffffff
-  }	 
-}
+bar {                                                                            #
+  #output			LVDS1                                                        #
+  status_command    i3status                                                     #
+  position			bottom                                                       #
+  font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1                 #
+  font pango:Terminus 15px                                                       #
+                                                                                 #
+  colors {                                                                       #
+	background #0A0019                                                           #
+	statusline #00ff00                                                           #
+	separator  #ffffff                                                           #
+                                                                                 #
+	#Class			   border  backgr. indic.  child_border                      #
+	focused_workspace  #00ff00 #00a100 #000000                                   #
+	active_workspace   #333333 #00a100 #000000                                   #
+	inactive_workspace #0a0019 #ff0000 #000000                                   #
+	urgent_workspace   #2f343a #900000 #ffffff                                   #
+	binding_mode       #2f343a #900000 #ffffff                                   #
+  }	                                                                             #
+}                                                                                #
 #=================================================================================
 
 ## configurando i3-gaps ##
 #=================================================================================
-for_window[class="^.*"]border pixel 2
-gaps inner 10
-gaps outer 4
+for_window[class="^.*"]border pixel 2                                            #
+gaps inner 10                                                                    #
+gaps outer 4                                                                     #
 #=================================================================================
 
 ## Configurando botao de desligar ##
-#=================================================================================
-set $Locker i3lock && sleep 1
-
-#set $mode_system System (l) (🔒), (e) (↩), (Shift+s) (⌛), (h) (Zz), (r) (↻), (s) (Ø)
-set $mode_system Aperte [r] = (↻reboot) ou [d] = (Ødesliga)
-mode "$mode_system" {
-    #bindsym l exec --no-startup-id $Locker, mode "default"
-    #bindsym e exec --no-startup-id i3-msg exit, mode "default"
-    #bindsym Shift+s exec --no-startup-id $Locker && systemctl suspend, mode "default"
-    #bindsym h exec --no-startup-id $Locker && systemctl hibernate, mode "default"
-    bindsym r exec --no-startup-id systemctl reboot, mode "default"
-    bindsym d exec --no-startup-id systemctl poweroff -i, mode "default"  
-
-    # back to normal: Enter or Escape
-    bindsym Return mode "default"
-    bindsym Escape mode "default"
-}
-
-bindsym $mod+Shift+d mode "$mode_system"
-#=================================================================================
+#==========================================================================================
+set $Locker i3lock && sleep 1                                                             #
+                                                                                          #
+#set $mode_system System (l) (🔒), (e) (↩), (Shift+s) (⌛), (h) (Zz), (r) (↻), (s) (Ø)    #
+set $mode_system Aperte [r] = (↻reboot) ou [d] = (Ødesliga)                               #
+mode "$mode_system" {                                                                     #
+    #bindsym l exec --no-startup-id $Locker, mode "default"                               #
+    #bindsym e exec --no-startup-id i3-msg exit, mode "default"                           #
+    #bindsym Shift+s exec --no-startup-id $Locker && systemctl suspend, mode "default"    #
+    #bindsym h exec --no-startup-id $Locker && systemctl hibernate, mode "default"        #
+    bindsym r exec --no-startup-id systemctl reboot, mode "default"                       #
+    bindsym d exec --no-startup-id systemctl poweroff -i, mode "default"                  #
+                                                                                          #
+    # back to normal: Enter or Escape                                                     #
+    bindsym Return mode "default"                                                         #
+    bindsym Escape mode "default"                                                         #
+}                                                                                         #
+                                                                                          #
+bindsym $mod+Shift+d mode "$mode_system"                                                  #
+#==========================================================================================
 
