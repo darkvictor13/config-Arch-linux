@@ -2,9 +2,11 @@
 #                                                                              #
 # Arquivo de configuracao modificado por : Victor                              #
 #                                                                              #
-# O arquivo de configuracao do i3 vem por padrao na home do seu usuario        #
-# Ou seja o arquivo esta em *[~/.config/i3/config]*                            #
+# Esse arquivo de configuracao vem por padrao em (~/.config/i3/config)         #
 #                                                                              #
+# Ou seja meu link simbolico ficou assim                                       #
+# (ln -s ~/Repos/config-Arch-linux/i3status.conf ~/.config/i3/config)          #
+#                                                                              # 
 ################################################################################
 
                      #### Definindo as variaveis ####

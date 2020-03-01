@@ -1,3 +1,14 @@
+"################################################################################
+"#                                                                              #
+"# Arquivo de configuracao modificado por : Victor                              #
+"#                                                                              #
+"# Esse arquivo de configuracao vem por padrao em (~/.vimrc)                    #
+"#                                                                              #
+"# Ou seja meu link simbolico ficou assim                                       #
+"# (ln -s ~/Repos/config-Arch-linux/i3status.conf ~/.vimrc)                     #
+"#                                                                              # 
+"################################################################################
+
 " minhas primeiras configs
 syntax on
 syntax enable
@@ -47,7 +58,3 @@ augroup project
   autocmd!
   autocmd BufRead,BufNewFile *.h,*.c set filetype=c.doxygen
 augroup END
-
-" Compilar e rodar
-set makeprg=make\ -C\ ../build\ -j9
-nnoremap <F4> :make!<cr>

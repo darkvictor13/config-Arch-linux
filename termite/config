@@ -1,3 +1,15 @@
+################################################################################
+#                                                                              #
+# Arquivo de configuracao modificado por : Victor                              #
+#                                                                              #
+# Esse arquivo de configuracao vem por padrao em (~/.config/termite/config)    #
+#                                                                              #
+# Ou seja meu link simbolico ficou assim                                       #
+# (ln -s ~/Repos/config-Arch-linux/i3status.conf ~/.config/termite/config)     #
+#                                                                              # 
+################################################################################
+
+
 [colors]
 
 # special
