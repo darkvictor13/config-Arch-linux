@@ -40,18 +40,17 @@ exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork          
 # configurando a barra de informacoes do i3 #
 #=================================================================================
 bar {                                                                            #
-  #output			LVDS1					                                                     #
   status_command    i3status                                                     #
-  position					bottom					                                             #
+  position          bottom                                                       #
   font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1                 #
   font pango:Terminus 15px                                                       #
                                                                                  #
   colors {                                                                       #
-	background #0A0019							                                               #
-	statusline #00ff00								                                             #
-	separator  #ffffff									                                           #
+	background #0A0019                                                             #
+	statusline #00ff00                                                             #
+	separator  #ffffff                                                             #
                                                                                  #
-	#Class							border  backgr. indic.  child_border				               #
+	#Class              border  backgr. indic.  child_border				               #
 	focused_workspace		#00ff00 #00a100 #000000									                   #
 	active_workspace		#333333 #00a100 #000000										                 #
 	inactive_workspace	#0a0019 #ff0000 #000000											               #
