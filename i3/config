@@ -153,7 +153,7 @@ bindsym $mod+h split h
 # bindsym $mod+Shift+
 
 ############## I ############## 
-# bindsym $mod+
+bindsym $mod+i exec termite --exec="neofetch"
 # bindsym $mod+Shift+
 
 ############## J ############## 
@@ -201,7 +201,7 @@ bindsym $mod+s layout stacking
 # bindsym $mod+Shift+
 
 ############## T ############## 
-# bindsym $mod+
+bindsym $mod+t exec thunar
 # bindsym $mod+Shift+
 
 ############## U ############## 

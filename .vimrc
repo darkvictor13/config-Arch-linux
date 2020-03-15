@@ -14,6 +14,7 @@ syntax on
 syntax enable
 set showmatch
 set number
+set relativenumber
 
 " Fazendo rodar o pathogen
 execute pathogen#infect()
@@ -48,7 +49,7 @@ set softtabstop=2
 set shiftwidth=2
 set noexpandtab
 
-" Arruma o sistema de busca da tecla [/]
+" arruma o sistema de busca da tecla [/]
 set hlsearch
 set incsearch
 nnoremap <leader><space> :nohlsearch<CR>
