@@ -127,7 +127,7 @@ bindsym $mod+Shift+c reload
 
 ############## D ############## 
 # start dmenu 
-bindsym $mod+d exec dmenu_run
+bindsym $mod+d exec rofi -show run
 # Ativa o botao de desligar (Ele foi definido acima)
 bindsym $mod+Shift+d mode "$mode_system"
  
@@ -153,7 +153,7 @@ bindsym $mod+h split h
 # bindsym $mod+Shift+
 
 ############## I ############## 
-bindsym $mod+i exec termite --exec="neofetch"
+# bindsym $mod+i 
 # bindsym $mod+Shift+
 
 ############## J ############## 

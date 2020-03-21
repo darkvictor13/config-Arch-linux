@@ -8,12 +8,12 @@ Esse arquivo texto tem como objetivo informar o Victor do futuro e demais intere
      |-----------------------------------|
      |	$ rfkill list all                |
      |	0: phy0: Wireless LAN            |
-	 |		Soft blocked: no			 |
-	 |		Hard blocked: yes			 |
-	 |	1: acer-wireless: Wireless LAN   |
-	 |		Soft blocked: yes			 |
-	 |		Hard blocked: no			 |
-	 |-----------------------------------|
+		 |		Soft blocked: no			 |
+		 |		Hard blocked: yes			 |
+		 |	1: acer-wireless: Wireless LAN   |
+	   |		Soft blocked: yes			 |
+	   |		Hard blocked: no			 |
+	    |-----------------------------------|
   → Se no Output o hardware utilizado para wifi tiver bloqueado basta utilizar o comando :
 	*[rfkill unblock all]*.
 
