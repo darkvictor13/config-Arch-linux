@@ -50,6 +50,13 @@ set softtabstop=2
 set shiftwidth=2
 set noexpandtab
 
+" Colocando os auto complete que estou acostumado
+inoremap " ""<left>
+inoremap ' ''<left>
+inoremap ( ()<left>
+inoremap [ []<left>
+inoremap { {}<left>
+
 " arruma o sistema de busca da tecla [/]
 set hlsearch
 set incsearch
