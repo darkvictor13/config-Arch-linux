@@ -9,16 +9,17 @@
 "#                                                                              # 
 "################################################################################
 
-" minhas primeiras configs
+" Fazendo rodar o pathogen
+execute pathogen#infect()
+filetype plugin indent on
+
+" Configs de aspectos visuais
+colorscheme dracula
 syntax on
 syntax enable
 set showmatch
 set number
 set relativenumber
-
-" Fazendo rodar o pathogen
-execute pathogen#infect()
-filetype plugin indent on
 
 " lightline
 set noshowmode
