@@ -60,3 +60,9 @@ augroup project
   autocmd!
   autocmd BufRead,BufNewFile *.h,*.c set filetype=c.doxygen
 augroup END
+
+" Trabalhando com latex
+autocmd FileType tex  map <C-p> :silent !qpdfview %:r.pdf &<Enter>
+autocmd BufWinLeave *.tex silent! execute "!latexmk -c"
+autocmd FileType tex  map <C-r> :silent !latexmk -pvc -pdf %:r.tex &<Enter>
+
