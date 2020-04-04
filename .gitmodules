@@ -22,3 +22,12 @@
 [submodule ".vim/bundle/awesome-vim-colorschemes"]
 	path = .vim/bundle/awesome-vim-colorschemes
 	url = https://github.com/rafi/awesome-vim-colorschemes.git
+[submodule ".vim/bundle/vim-snippets"]
+	path = .vim/bundle/vim-snippets
+	url = https://github.com/honza/vim-snippets.git
+[submodule ".vim/bundle/ultisnips"]
+	path = .vim/bundle/ultisnips
+	url = https://github.com/SirVer/ultisnips.git
+[submodule ".vim/bundle/syntastic"]
+	path = .vim/bundle/syntastic
+	url = https://github.com/vim-syntastic/syntastic.git

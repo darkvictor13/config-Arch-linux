@@ -14,7 +14,10 @@ execute pathogen#infect()
 filetype plugin indent on
 
 " Configs de aspectos visuais
-colorscheme dracula
+color spacecamp_lite
+"color dracula
+"color space-vim-dark
+"color aprendice
 syntax on
 syntax enable
 set showmatch
@@ -36,6 +39,14 @@ let g:lightline = {
 let g:ycm_global_ycm_extra_conf = "~/.vim/.ycm_extra_conf.py"
 let g:ycm_key_list_select_completion=[]
 let g:ycm_key_list_previous_completion=[]
+let g:ycm_complete_in_comments = 1
+let g:ycm_autoclose_preview_window_after_completion = 1
+let g:ycm_autoclose_preview_window_after_insertion = 1
+let g:ycm_semantic_triggers =  {
+  \ 'c' : ['re!\w{2}'],
+  \ 'cpp' : ['re!\w{2}'],
+  \ 'python' : ['re!\w{2}'],
+  \ }
 
 " Nerdtree
 map <C-o> :NERDTreeToggle<CR>
@@ -62,14 +73,20 @@ set hlsearch
 set incsearch
 nnoremap <leader><space> :nohlsearch<CR>
 
-" Trabalhando com c puro
-augroup project
-  autocmd!
-  autocmd BufRead,BufNewFile *.h,*.c set filetype=c.doxygen
-augroup END
-
 " Trabalhando com latex
-autocmd FileType tex  map <C-p> :silent !qpdfview %:r.pdf &<Enter>
+"autocmd FileType tex  map <C-p> :silent !qpdfview %:r.pdf &<Enter>
+autocmd FileType tex  map <C-p> :silent !evince %:r.pdf &<Enter>
+"autocmd FileType tex  map <C-r> :silent !latexmk -pvc -pdf %:r.tex &<Enter>
+autocmd FileType tex  map <C-r> :silent !pdflatex %:r.tex &<Enter>
 autocmd BufWinLeave *.tex silent! execute "!latexmk -c"
-autocmd FileType tex  map <C-r> :silent !latexmk -pvc -pdf %:r.tex &<Enter>
+
+" Verificador de erros c/c++ syntastic
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
 
