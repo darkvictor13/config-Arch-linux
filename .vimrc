@@ -53,11 +53,14 @@ let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
 " Latex live Preview
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<C-n>"
+let g:UltiSnipsJumpBackwardTrigger="<C-z>"
 let g:livepreview_previewer = 'zathura'
 let g:livepreview_cursorhold_recompile = 1
 
 " Criando snippets
-let g:UltiSnipsSnippetDirectories=["UltiSnips", "meus_snippets"]
+let g:UltiSnipsSnippetDirectories=["UltiSnips"]
 
 " ########### Configs do vim puro ########### 
 
@@ -108,4 +111,4 @@ set path=$PWD/**
 
 " Compilar em c
 autocmd FileType c map <F6> :silent !gcc %:r.c -o %:r -lm &<Enter>
-
+autocmd FileType cpp map <F6> :silent !g++ %:r.c -o %:r &<Enter>
