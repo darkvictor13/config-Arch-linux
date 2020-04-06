@@ -30,7 +30,7 @@
 			\label{fig:rfkill}
 		\end{figure}
 
-		Tendo a certeza que esta desbloqueado, basta usar \textbf{$\ast$wifi-menu$\ast$}, e então será aberta uma tela na qual basta selecionar a rede (aparecera todos os SSID disponiveis para conectar), e informar a senha.\\
+		Tendo a certeza que esta desbloqueado, basta usar \textbf{$\ast$wifi-menu$\ast$}, e então será aberta uma tela na qual basta selecionar a rede (aparecerá todos os SSID disponiveis para conectar), e informar a senha.\\
 		\begin{figure}[htb]
 			\centering
 			\includegraphics[width=75mm]{images/wifi-menu.jpg}
@@ -42,9 +42,9 @@
 
 	Primeiramente é sempre bom verificar as partições já existentes no disco, para fazer isso vamos usar \textbf{$\ast$fdisk -l$\ast$}, o parametro (-l) é para listar todas as partições existentes.
 
-	Agora sabendo qual o disco a ser particionado e as partições já existentes basta utilizar \textbf{$\ast$cfdisk /dev/sdx$\ast$}. Obs: no lugar de (x) coloque a letra correta para indicar seu disco, se for o disco primario sera ``sda'', mas pode ser sdb, sdc, etc \ldots
+	Agora sabendo qual o disco a ser particionado e as partições já existentes basta utilizar \textbf{$\ast$cfdisk /dev/sdx$\ast$}. Obs: no lugar de (x) coloque a letra correta para indicar seu disco, se for o disco primario sera ``sda'', mas pode ser sdb, sdc, etc\ldots
 
-	Para usar o cfdisk é muito simples basta usar as setas para navegar até o (new), digitar o tamanho da particao e selecionar o tipo dela. Essa é a tela que vc vai encontrar:
+	Para usar o cfdisk é muito simples basta usar as setas para navegar até o [new], digitar o tamanho da particao e selecionar o tipo dela. Essa é a tela que você vai encontrar:
 	\begin{figure}[htb]
     \centering
     \includegraphics[width=\linewidth]{images/cfdisk.png}
@@ -54,5 +54,24 @@
 
 	Quando se instala o Arch, recomenda-se fazer 4 partições. Sendo elas:\\
 	\centering\textbf{``/boot''|``/''|``/home''|``swap''}
+
+	$\rightarrow$ Após criar as partições vamos dizer o tipo delas:\\
+	\indent$\hookrightarrow$ Para fazer isso navegue até [ Type ]
+
+	Você deve mudar o tipo das partições \textbf{``/boot'' , ``swap''}
+	\newpage
+	Mude os tipos da seguinte maneira:
+	\begin{itemize}
+		\item /boot $\rightarrow$ Tipo = BIOS boot\\
+		\item swap $\rightarrow$ Tipo = Linux swap\\
+	\end{itemize}
+
+	Então você deve ter um disco mais ou menos dessa maneira :
+	\begin{figure}[htb]
+		\centering
+		\includegraphics[width=\textwidth]{images/2.png}
+		\caption{Esquema de como deve estar o disco}
+		\label{fig:disco}
+	\end{figure}
 
 \end{document}
