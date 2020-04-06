@@ -13,16 +13,7 @@
 execute pathogen#infect()
 filetype plugin indent on
 
-" Configs de aspectos visuais
-color spacecamp_lite
-"color dracula
-"color space-vim-dark
-"color aprendice
-syntax on
-syntax enable
-set showmatch
-set number
-set relativenumber
+" ########### Os meus plugins ########### 
 
 " lightline
 set noshowmode
@@ -30,7 +21,7 @@ set laststatus=2
 let g:lightline = {
       \ 'colorscheme': 'powerline',
       \     'active': {
-	  \         'left': [['mode', 'paste' ], ['readonly', 'filename', 'modified']],
+			\     'left' : [['mode', 'paste' ], ['readonly', 'filename', 'modified']],
       \			'right': [['lineinfo'], ['percent'], ['fileformat', 'fileencoding']]
       \		}
 	  \ }
@@ -51,35 +42,6 @@ let g:ycm_semantic_triggers =  {
 " Nerdtree
 map <C-o> :NERDTreeToggle<CR>
 
-"impede que o vim execute shellscripts indesejados, modo seguro
-set exrc
-set secure
-
-" Config do tab
-set tabstop=2
-set softtabstop=2
-set shiftwidth=2
-set noexpandtab
-
-" Colocando os auto complete que estou acostumado
-inoremap " ""<left>
-inoremap ' ''<left>
-inoremap ( ()<left>
-inoremap [ []<left>
-inoremap { {}<left>
-
-" arruma o sistema de busca da tecla [/]
-set hlsearch
-set incsearch
-nnoremap <leader><space> :nohlsearch<CR>
-
-" Trabalhando com latex
-"autocmd FileType tex  map <C-p> :silent !qpdfview %:r.pdf &<Enter>
-autocmd FileType tex  map <C-p> :silent !evince %:r.pdf &<Enter>
-"autocmd FileType tex  map <C-r> :silent !latexmk -pvc -pdf %:r.tex &<Enter>
-autocmd FileType tex  map <C-r> :silent !pdflatex %:r.tex &<Enter>
-autocmd BufWinLeave *.tex silent! execute "!latexmk -c"
-
 " Verificador de erros c/c++ syntastic
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
@@ -89,4 +51,61 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
+
+" Latex live Preview
+let g:livepreview_previewer = 'zathura'
+let g:livepreview_cursorhold_recompile = 1
+
+" Criando snippets
+let g:UltiSnipsSnippetDirectories=["UltiSnips", "meus_snippets"]
+
+" ########### Configs do vim puro ########### 
+
+" Trabalhando com latex
+"autocmd FileType tex  map <C-p> :silent !qpdfview %:r.pdf &<Enter>
+"autocmd FileType tex  map <C-p> :silent !evince %:r.pdf &<Enter>
+"autocmd FileType tex  map <C-r> :silent !latexmk -pvc -pdf %:r.tex &<Enter>
+"autocmd FileType tex  map <C-r> :silent !pdflatex %:r.tex &<Enter>
+autocmd BufWinLeave *.tex silent! execute "!latexmk -c"
+" Preview no latex 
+autocmd FileType tex nmap <F6> :LLPStartPreview <CR> 
+
+" Colocando os auto complete que estou acostumado
+inoremap " ""<left>
+inoremap ' ''<left>
+inoremap ( ()<left>
+inoremap [ []<left>
+inoremap { {}<left>
+
+" Config do tab
+set tabstop=2
+set softtabstop=2
+set shiftwidth=2
+set noexpandtab
+
+"impede que o vim execute shellscripts indesejados, modo seguro
+set exrc
+set secure
+
+" Configs de aspectos visuais
+"color spacecamp_lite
+color dracula
+"color space-vim-dark
+"color aprendice
+syntax on
+syntax enable
+set showmatch
+set number
+set relativenumber
+
+" arruma o sistema de busca da tecla [/]
+set hlsearch
+set incsearch
+nnoremap <leader><space> :nohlsearch<CR>
+
+" Arrumando a path
+set path=$PWD/**
+
+" Compilar em c
+autocmd FileType c map <F6> :silent !gcc %:r.c -o %:r -lm &<Enter>
 

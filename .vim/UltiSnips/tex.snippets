@@ -1,0 +1,37 @@
+extends tex
+
+snippet figure "Sintaxe para importar imagem"
+\begin\{figure}[htb]
+	\centering
+	\includegraphics[width=$1\textwidth]\{}
+	\caption\{}
+\end\{figure}
+endsnippet
+
+snippet comand
+\textbf\{\$\ast\$$1\$\ast$}
+endsnippet
+
+snippet ra 
+\$\rightarrow\$$1
+endsnippet
+
+snippet init
+\documentclass[12pt, a4paper] \{article}
+\usepackage[utf8]\{inputenc}
+\usepackage\{graphicx}
+\usepackage\{indentfirst}
+
+\begin\{document}
+	$1
+\end\{document}
+endsnippet
+
+snippet sec "Cria uma secao"
+\section{$1}
+endsnippet
+
+snippet ha "Flecha puxando da linha de cima"
+\hookrightarrow $1
+endsnippet
+
