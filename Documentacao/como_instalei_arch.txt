@@ -171,7 +171,7 @@ Esse arquivo texto tem como objetivo informar o Victor do futuro e demais intere
 	  ↳ Para instalar programas no arch basta digitar *[pacman -S]*, o unico pacote que achei necessario instalar agora foi para gerenciar a internet entao :
 		*[pacman -S networkmanager]*
 	  → Caso queira um icone bonito para configurar a internet  na sua futura interface grafica entao :
-		*[pacman -S etwork-manager-applet]*
+		*[pacman -S network-manager-applet]*
 	  → Caso esteja fazendo um dual boot :
 		*[pacman -S os-prober]*
 	

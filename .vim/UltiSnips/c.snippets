@@ -1,4 +1,4 @@
-extends c, cpp
+extends c
 
 snippet uri "Inicia o programa p uri"
 #include <stdio.h>
@@ -7,6 +7,22 @@ int main ()\{
 	$1
 	return 0;
 }
+endsnippet
+
+snippet scanf
+scanf("$1");
+endsnippet
+
+snippet printf
+printf("$1");
+endsnippet
+
+snippet fscanf
+fscanf($1, "$0");
+endsnippet
+
+snippet fprintf
+fprintf($1, "$0");
 endsnippet
 
 snippet for "Faz um for para vetor"
@@ -54,3 +70,15 @@ if($1)\{
 }
 endsnippet
 
+snippet vfunc
+void $1 ($2) \{
+	$0
+}
+endsnippet
+
+snippet ifunc
+int $1 ($2) \{
+	$0
+	return ;
+}
+endsnippet

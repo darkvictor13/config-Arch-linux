@@ -1,5 +1,4 @@
 \documentclass[12pt, a4paper] {article}
-\usepackage[utf8]{inputenc}
 \usepackage{graphicx}
 \usepackage{indentfirst}
 
@@ -9,22 +8,33 @@
 	\end{center}
 	
 	\section{Conectar wifi}
-	$\rightarrow$ Desbloquear a placa de wifi:\\
-	\indent\indent\hookrightarrow\textbf{$\ast$rfkill unblock all$\ast$}
-
-	$\rightarrow$ Ver as redes disponiveis\\
-	\indent\indent\hookrightarrow\textbf{$\ast$wifi-menu$\ast$}
-
-	$\rightarrow$ Selecione sua rede
-	
-	$\rightarrow$ Digite sua senha
-
-	$\rightarrow$ Teste sua internet\\
-	\indent\indent\hookrightarrow\textbf{$\ast$ping google.com$\ast$}
-
+	\begin{itemize}
+		\item Desbloquear a placa de wifi\\
+		\indent\indent$\hookrightarrow$ \textbf{$\ast$rfkill unblock all$\ast$}
+		\item Ver as redes disponiveis\\
+	 	\indent\indent$\hookrightarrow$ \textbf{$\ast$wifi-menu$\ast$}
+		\item Selecione sua rede	
+		\item Digite sua senha
+		\item Teste sua internet
+		\item Selecione sua rede\\
+	 	\indent\indent$\hookrightarrow$\textbf{$\ast$ping google.com$\ast$}
+	\end{itemize}
 	\section{Particionar o disco}
+	\begin{itemize}
+		\item \textbf{$\ast$cfdisk -L$\ast$}\\
+		$\hookrightarrow$ \textbf{Criei um /, /boot, /home, swap}
+	\end{itemize}
+	\subsection{Criar file systems}
+	\begin{itemize}
+		\item mkswap /dev/sdXy
+		\item swapon /dev/sdXy
+		\item mkfs.fat -F32 /dev/sdaXz
+		\item mkfs.ext4 /dev/sdXa
+		\item mkfs.ext4 /dev/sdXb\\
+		$\rightarrow$ \textbf{No lugar de y, z, a, b. Coloque o numero da partição adequado.}
+	\end{itemize}
 	
-	\section{Instalacao de Pacotes}
+	\section{Instalação de Pacotes}
 
 	\section{Fstab}
 

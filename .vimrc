@@ -5,7 +5,7 @@
 "# Esse arquivo de configuracao vem por padrao em (~/.vimrc)                    #
 "#                                                                              #
 "# Ou seja meu link simbolico ficou assim                                       #
-"# (ln -s ~/Repos/config-Arch-linux/i3status.conf ~/.vimrc)                     #
+"# (ln -s ~/Repos/config-Arch-linux/.vimrc ~/.vimrc)							              #
 "#                                                                              # 
 "################################################################################
 
@@ -38,9 +38,6 @@ let g:ycm_semantic_triggers =  {
   \ 'cpp' : ['re!\w{2}'],
   \ 'python' : ['re!\w{2}'],
   \ }
-
-" Nerdtree
-map <C-o> :NERDTreeToggle<CR>
 
 " Verificador de erros c/c++ syntastic
 set statusline+=%#warningmsg#
