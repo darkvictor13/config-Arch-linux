@@ -5,7 +5,7 @@
 # Esse arquivo de configuracao vem por padrao em (~/.config/i3/config)         #
 #                                                                              #
 # Ou seja meu link simbolico ficou assim                                       #
-# (ln -s ~/Repos/config-Arch-linux/i3status.conf ~/.config/i3/config)          #
+# (ln -s ~/Repos/config-Arch-linux/i3 ~/.config/i3)										         #
 #                                                                              # 
 ################################################################################
 
@@ -28,15 +28,17 @@ set $mod Mod4
                  #### Configuracoes mais gerais do sistema ####
 # Fonte
 font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
-font pango:Terminus 20px 
+font pango:Source Code Pro 20px 
 
 # Aplicacoes que iniciam com o sistema #
 #=================================================================================
 exec --no-startup-id nitrogen --restore&                                         #
 exec --no-startup-id compton                                                     #
 exec --no-startup-id volumeicon                                                  #
+exec --no-startup-id flameshot                                                   #
 exec --no-startup-id nm-applet                                                   #
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork           #
+exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 #=================================================================================
 
 # configurando a barra de informacoes do i3 #
@@ -45,7 +47,7 @@ bar {                                                                           
   status_command    i3status                                                     #
   position          bottom                                                       #
   font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1                 #
-  font pango:Terminus 15px                                                       #
+  font pango:Source Code Pro 15px                                                #
                                                                                  #
   colors {                                                                       #
 	background #0A0019                                                             #
@@ -237,9 +239,12 @@ bindsym $mod+Return exec termite
 # bindsym $mod+Shift+Return
 
 ############## <PrtSc> ############## 
-# tira print
+# tira print de uma parte da tela
 bindsym Print exec termite -e 'flameshot gui'
-# bindsym $mod+Shift+Print
+# tira print de toda tela e guarda em Screenshots
+bindsym $mod+Shift+Print exec termite -e 'flameshot full -p ~/Pictures/Screenshots'
+# tira print de toda tela e deixa no clipboard
+bindsym $mod+Print exec termite -e 'flameshot full -c'
 
 ############## <Numeros> ############## 
 # Mudando de workspace

@@ -51,4 +51,5 @@ color7  = #bfbfbf
 color15 = #e6e6e6
 
 [options]
-font = Monospace 12
+#font = Ubuntu Mono derivative Powerline 12
+font = Source Code Pro 11

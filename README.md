@@ -7,7 +7,9 @@ Esse repositorio tem como objetivo facilitar com que eu ache as minhas configs, 
 # Aplicativos que uso
 
 * Window Mannager: i3
-* Terminal: 
+* Terminal: Termite
+* Screenshots: flameshot
 * File Mannager: ranger
 * display mannager: LightDm
+	-> Editado usando: lightdm-gtk-greeter-settings
 * text editor: vim

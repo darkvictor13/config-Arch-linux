@@ -1,5 +1,6 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhistcnt =8
+let g:netrw_dirhistcnt =9
+let g:netrw_dirhist_9='/home/victor/Repos/config-Arch-linux/.vim/UltiSnips'
 let g:netrw_dirhist_8='/home/victor/Repos/Todos-Uri'
 let g:netrw_dirhist_7='/home/victor/Repos'
 let g:netrw_dirhist_6='/home/victor'
