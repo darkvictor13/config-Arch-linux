@@ -88,8 +88,8 @@ set exrc
 set secure
 
 " Configs de aspectos visuais
-color abbott
-"color spacecamp_lite
+"color abbott.vim
+color spacecamp_lite
 "color dracula
 "color space-vim-dark
 "color aprendice
