@@ -6,16 +6,26 @@ Esse repositorio tem como objetivo facilitar com que eu ache as minhas configs, 
 
 # Aplicativos que uso
 
-* Window Mannager: i3
+* Window Mannager: i3-gaps
+
+		Status bar: i3status
+
+		Application launcher: rofi
+
+		Locker: i3lock-color, xautolock
 * Terminal: Termite
 * Font: Source Code Pro 
 
 		Install: nerd-fonts-source-code-pro(AUR)
 * Screenshots: flameshot
 * File Mannager: ranger
-* display mannager: LightDm
+* Display mannager: LightDm
 
 		Greeter: lightdm-slick-greeter(AUR)
 
 		Editado usando: lightdm-settings(AUR)
-* text editor: vim (pacote: gvim)
+* Text editor: vim (pacote: gvim)
+* AUR Helper: yay(AUR)
+* Volume: alsa-firmware
+
+		graphical interface on i3bar: volumeicon
