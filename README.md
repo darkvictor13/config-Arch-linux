@@ -15,7 +15,7 @@ Esse repositorio tem como objetivo facilitar com que eu ache as minhas configs, 
 * File Mannager: ranger
 * display mannager: LightDm
 
-	-> Greeter: lightdm-slick-greeter(AUR)
+		Greeter: lightdm-slick-greeter(AUR)
 
-	-> Editado usando: lightdm-settings(AUR)
+		Editado usando: lightdm-settings(AUR)
 * text editor: vim (pacote: gvim)
