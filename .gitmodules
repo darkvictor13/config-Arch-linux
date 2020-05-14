@@ -31,3 +31,6 @@
 [submodule ".vim/bundle/syntastic"]
 	path = .vim/bundle/syntastic
 	url = https://github.com/vim-syntastic/syntastic.git
+[submodule ".vim/bundle/abbott.vim"]
+	path = .vim/bundle/abbott.vim
+	url = https://github.com/vim-scripts/abbott.vim.git
