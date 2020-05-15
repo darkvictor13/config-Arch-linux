@@ -19,7 +19,7 @@ export ZSH="/home/victor/.oh-my-zsh"
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="dpoggi"
+ZSH_THEME="agnoster"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -157,7 +157,7 @@ autoload -Uz _zinit
 zinit light zsh-users/zsh-autosuggestions
 zinit light zdharma/fast-syntax-highlighting
 
-zinit ice atclone"dircolors -b LS_COLORS > c.zsh" atpull'%atclone' pick"c.zsh" nocompile'!'
-zinit light trapd00r/LS_COLORS
+#zinit ice atclone"dircolors -b LS_COLORS > c.zsh" atpull'%atclone' pick"c.zsh" nocompile'!'
+#zinit light trapd00r/LS_COLORS
 
 alias neofetch="neofetch | lolcat"
