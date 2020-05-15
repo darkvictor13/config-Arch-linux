@@ -109,3 +109,4 @@ set path=$PWD/**
 " Compilar em c
 autocmd FileType c map <F6> :silent !gcc %:r.c -o %:r -lm &<Enter>
 autocmd FileType cpp map <F6> :silent !g++ %:r.c -o %:r &<Enter>
+set clipboard=unnamedplus
