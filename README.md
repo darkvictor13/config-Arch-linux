@@ -1,7 +1,12 @@
 # Configurações do meu Arch linux
-Esse repositorio tem como objetivo facilitar com que eu ache as minhas configs, ou seja esse é o repositorio central do meu:
+Esse repositorio tem como objetivo facilitar com que eu ache as minhas configs, ou seja esse é o repositorio central do meu
+ARCH LINUX
 
-# ARCH LINUX
+# Outros repositorios que complementam esse:
+https://github.com/darkvictor13/install-arch
+
+https://github.com/darkvictor13/.dot-files
+
 ![external-content duckduckgo com](https://user-images.githubusercontent.com/51101723/81018062-1cc2d780-8e3a-11ea-891d-eaac6f1425e4.png)
 
 # Aplicativos que uso
