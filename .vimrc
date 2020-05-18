@@ -86,6 +86,7 @@ set noexpandtab
 "impede que o vim execute shellscripts indesejados, modo seguro
 set exrc
 set secure
+set encoding=utf-8
 
 " Configs de aspectos visuais
 "color abbott.vim
