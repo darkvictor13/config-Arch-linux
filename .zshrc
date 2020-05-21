@@ -140,6 +140,17 @@ zle -N zle-line-init
 echo -ne '\e[5 q' # Use beam shape cursor on startup.
 preexec() { echo -ne '\e[5 q' ;} # Use beam shape cursor for each new prompt.
 
+# funcao para adicionar no git de forma automatica
+function auto_git() {
+	git add -A
+	git commit -m "$1"
+	git push
+}
+# faz o neofetch colorido
+alias neofetch="neofetch | lolcat"
+# apos dar cd ele da ls automaticamente
+chpwd() ls
+
 
 ### Added by Zinit's installer
 if [[ ! -f $HOME/.zinit/bin/zinit.zsh ]]; then
@@ -159,6 +170,3 @@ zinit light zdharma/fast-syntax-highlighting
 
 #zinit ice atclone"dircolors -b LS_COLORS > c.zsh" atpull'%atclone' pick"c.zsh" nocompile'!'
 #zinit light trapd00r/LS_COLORS
-
-alias neofetch="neofetch | lolcat"
-chpwd() ls
