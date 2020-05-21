@@ -161,3 +161,4 @@ zinit light zdharma/fast-syntax-highlighting
 #zinit light trapd00r/LS_COLORS
 
 alias neofetch="neofetch | lolcat"
+chpwd() ls
