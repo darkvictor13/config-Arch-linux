@@ -1,10 +1,10 @@
 "################################################################################
 "#                                                                              #
-"# Arquivo de configuracao modificado por : Victor                              #
+"# Arquivo de configuração modificado por : Victor                              #
 "#                                                                              #
-"# Esse arquivo de configuracao vem por padrao em (~/.vimrc)                    #
+"# Esse arquivo de configuração vem por padrão em (~/.vimrc)                    #
 "#                                                                              #
-"# Ou seja meu link simbolico ficou assim                                       #
+"# Ou seja meu link simbólico ficou assim                                       #
 "# (ln -s ~/Repos/config-Arch-linux/.vimrc ~/.vimrc)							              #
 "#                                                                              # 
 "################################################################################
@@ -77,7 +77,7 @@ inoremap ( ()<left>
 inoremap [ []<left>
 inoremap { {}<left>
 
-" Config do tab
+" Configuração do tab
 set tabstop=2
 set softtabstop=2
 set shiftwidth=2
@@ -86,9 +86,8 @@ set noexpandtab
 "impede que o vim execute shellscripts indesejados, modo seguro
 set exrc
 set secure
-set encoding=utf-8
 
-" Configs de aspectos visuais
+" Configuração de aspectos visuais
 "color abbott.vim
 color spacecamp_lite
 "color dracula
@@ -112,3 +111,7 @@ set path=$PWD/**
 autocmd FileType c map <F6> :silent !gcc %:r.c -o %:r -lm &<Enter>
 autocmd FileType cpp map <F6> :silent !g++ %:r.c -o %:r &<Enter>
 set clipboard=unnamedplus
+
+" Carrega dicionario em português
+set spell spelllang=pt 
+set encoding=utf-8
